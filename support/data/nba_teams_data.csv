@@ -1,0 +1,31 @@
+teamname,abbrev,aliases,conference,division,location,arena,color_1,color_2,color_3
+Atlanta Hawks,ATL,"Atlanta, Hawks",East,Southeast,"Atlanta, Georgia",State Farm Arena,#E03A3E,#C1D32F,#26282A
+Boston Celtics,BOS,"Boston, Celtics",East,Atlantic,"Boston, Massachusetts",TD Garden,#007A33,#BA9653,#FFFFFF
+Brooklyn Nets,BRK,"Brooklyn, Nets",East,Atlantic,"Brooklyn, New York",Barclays Center,#000000,#FFFFFF,#757D8A
+Charlotte Hornets,CHA,"Charlotte, Hornets",East,Southeast,"Charlotte, North Carolina",Spectrum Center,#00788C,#1D1160,#A1A1A4
+Chicago Bulls,CHI,"Chicago, Bulls",East,Central,"Chicago, Illinois",United Center,#CE1141,#000000,#FFFFFF
+Cleveland Cavaliers,CLE,"Cleveland, Cavaliers, Cavs",East,Central,"Cleveland, Ohio",Rocket Mortgage FieldHouse,#860038,#FFB81C,#041E42
+Dallas Mavericks,DAL,"Dallas, Mavericks, Mavs",West,Southwest,"Dallas, Texas",American Airlines Center,#00538C,#002B5E,#B8C4CA
+Denver Nuggets,DEN,"Denver, Nuggets",West,Northwest,"Denver, Colorado",Ball Arena,#0E2240,#FEC524,#8B2131
+Detroit Pistons,DET,"Detroit, Pistons",East,Central,"Detroit, Michigan",Little Caesars Arena,#C8102E,#006BB6,#ED174C
+Golden State Warriors,GSW,"Golden State, Warriors",West,Pacific,"San Francisco, California",Chase Center,#1D428A,#FDB927,#FFFFFF
+Houston Rockets,HOU,"Houston, Rockets",West,Southwest,"Houston, Texas",Toyota Center,#CE1141,#C4CED4,#000000
+Indiana Pacers,IND,"Indiana, Pacers",East,Central,"Indianapolis, Indiana",Gainbridge Fieldhouse,#FDBB30,#002D62,#BEC0C2
+Los Angeles Clippers,LAC,"Clippers, LA Clippers, Los Angeles Clippers",West,Pacific,"Los Angeles, California",Intuit Dome,#C8102E,#1D428A,#000000
+Los Angeles Lakers,LAL,"Lakers, LA Lakers",West,Pacific,"Los Angeles, California",Crypto.com Arena,#552583,#FDB927,#FFFFFF
+Memphis Grizzlies,MEM,"Memphis, Grizzlies",West,Southwest,"Memphis, Tennessee",FedEx Forum,#5A83d6,#12173F,#F5B112
+Miami Heat,MIA,"Miami, Heat",East,Southeast,"Miami, Florida",Kaseya Center,#98002E,#F9A01B,#000000
+Milwaukee Bucks,MIL,"Milwaukee, Bucks",East,Central,"Milwaukee, Wisconsin",Fiserv Forum,#00471B,#EEE1C6,#0077C0
+Minnesota Timberwolves,MIN,"Minnesota, Timberwolves, Wolves, T-Wolves, TWolves",West,Northwest,"Minneapolis, Minnesota",Target Center,#236192,#0C2340,#236192
+New Orleans Pelicans,NOP,"New, Orleans Pelicans",West,Southwest,"New Orleans, Louisiana",Smoothie King Center,#C8102E,#0C2340,#85714D
+New York Knicks,NYK,"New York, Knicks",East,Atlantic,"New York, New York",Madison Square Garden,#F58426,#006BB6,#FFFFFF
+Oklahoma City Thunder,OKC,"Oklahoma, City Thunder",West,Northwest,"Oklahoma City, Oklahoma",Paycom Center,#007AC1,#EF3B24,#FDBB30
+Orlando Magic,ORL,"Orlando, Magic",East,Southeast,"Orlando, Florida",Kia Center,#0077C0,#C4CED4,#000000
+Philadelphia 76ers,PHI,"Philadelphia, 76ers, Sixers, Philly",East,Atlantic,"Philadelphia, Pennsylvania",Wells Fargo Center,#006BB6,#ED174C,#FFFFFF
+Phoenix Suns,PHO,"Phoenix, Suns",West,Pacific,"Phoenix, Arizona",Footprint Center,#371C70,#E56020,#000000
+Portland Trail Blazers,POR,"Portland, Trail Blazers, Trailblazers, Blazers",West,Northwest,"Portland, Oregon",Moda Center,#E03A3E,#000000,#FFFFFF
+Sacramento Kings,SAC,"Sacramento, Kings",West,Pacific,"Sacramento, California",Golden 1 Center,#5A2D81,#63727A,#000000
+San Antonio Spurs,SAS,"San Antonio, Spurs",West,Southwest,"San Antonio, Texas",Frost Bank Center,#000000,#C4CED4,#FFFFFF
+Toronto Raptors,TOR,"Toronto, Raptors",East,Atlantic,"Toronto, Ontario, Canada",Scotiabank Arena,#CE1141,#000000,#FFFFFF
+Utah Jazz,UTA,"Utah, Jazz",West,Northwest,"Salt Lake City, Utah",Delta Center,#753BBD,#002B5C,#00471B
+Washington Wizards,WAS,"Washington, Wizards",East,Southeast,"Washington, DC",Capital One Arena,#002880,#E31837,#C4CED4
