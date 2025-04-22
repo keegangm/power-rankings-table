@@ -1,16 +1,3 @@
-import subprocess
-import streamlit as st
-
-# Debug: Check installed packages
-result = subprocess.run(['pip', 'list'], capture_output=True, text=True)
-st.code(result.stdout)
-
-# Debug: Check requirements.txt exists
-try:
-    with open('requirements.txt') as f:
-        st.code(f.read())
-except FileNotFoundError:
-    st.error("requirements.txt NOT FOUND in deployment!")
 
 import streamlit as st
 
@@ -27,24 +14,26 @@ from datetime import date, timedelta
 from io import BytesIO
 import base64
 
-import sys
-from pathlib import Path
+from support import nba_teams
 
-# Absolute path to support module
-support_path = Path(__file__).parent / "support"
-sys.path.insert(0, str(support_path))
+#import sys
+#from pathlib import Path
 
-try:
-    from support import nba_teams  # Explicit relative import
-except ImportError:
-    try:
-        import nba_teams  # Fallback
-    except ImportError as e:
-        raise RuntimeError(
-            f"❌ Failed to import nba_teams. "
-            f"Check: {list(support_path.glob('*'))} "
-            f"Current sys.path: {sys.path}"
-        ) from e
+## Absolute path to support module
+#support_path = Path(__file__).parent / "support"
+#sys.path.insert(0, str(support_path))
+
+#try:
+#    from support import nba_teams  # Explicit relative import
+#except ImportError:
+#    try:
+#        import nba_teams  # Fallback
+#    except ImportError as e:
+#        raise RuntimeError(
+#            f"❌ Failed to import nba_teams. "
+#            f"Check: {list(support_path.glob('*'))} "
+#            f"Current sys.path: {sys.path}"
+#        ) from e
 
 def find_file(file_name):
     """Find file within Dash_Deploy/support/ or support/."""
