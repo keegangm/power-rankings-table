@@ -1,4 +1,3 @@
-
 import streamlit as st
 
 import pandas as pd
@@ -16,16 +15,16 @@ import base64
 
 from support import nba_teams
 
-#import sys
-#from pathlib import Path
+# import sys
+# from pathlib import Path
 
 ## Absolute path to support module
-#support_path = Path(__file__).parent / "support"
-#sys.path.insert(0, str(support_path))
+# support_path = Path(__file__).parent / "support"
+# sys.path.insert(0, str(support_path))
 
-#try:
+# try:
 #    from support import nba_teams  # Explicit relative import
-#except ImportError:
+# except ImportError:
 #    try:
 #        import nba_teams  # Fallback
 #    except ImportError as e:
@@ -34,6 +33,7 @@ from support import nba_teams
 #            f"Check: {list(support_path.glob('*'))} "
 #            f"Current sys.path: {sys.path}"
 #        ) from e
+
 
 def find_file(file_name):
     """Find file within Dash_Deploy/support/ or support/."""
@@ -159,29 +159,46 @@ week_cols = [col for col in df.columns if col != "teamname"]
 
 
 df_long = df.melt(id_vars="teamname", var_name="week", value_name="rank")
-df_long["change"] = df_long.groupby("teamname")["rank"].diff().abs()
+# df_long["change"] = df_long.groupby("teamname")["rank"].diff().abs()
+df_long["change"] = -1 * df_long.groupby("teamname")["rank"].diff()  # .abs()
+df_group = df_long.groupby("teamname")["change"].agg(["min", "max"])
+
+for index, row in df_group.iterrows():
+    # if row min is greater than row max, that means that the FALL is the greatest weekly change
+    if abs(row["min"]) > row["max"]:
+        df_group.loc[index, "max_change"] = row["min"]
+    else:
+        df_group.loc[index, "max_change"] = row["max"]
+
+    # print(df_group)
+
+# print(df_group)
+df_group.drop(["min", "max"], axis=1, inplace=True)
 
 stats = (
-    df_long.groupby("teamname")["rank"]
-    .agg(["min", "max", "mean", "std"])
-    .assign(max_1week_delta=df_long.groupby("teamname")["change"].max())
+    df_long.groupby("teamname")["rank"].agg(["min", "max", "mean", "std"])
+    # .assign(max_1week_delta=df_long.groupby("teamname")["change"].max())
     .round(2)
     # .reset_index()
 )
 
+stats = stats.merge(df_group, how="left", on="teamname")
+
+# print(stats)
+
 
 def trend_to_sparkline(team):
-    color= nba_teams.team_color1(team)
+    color = nba_teams.team_color1(team)
     trend = df[df["teamname"] == team][week_cols].values.flatten()
     fig, ax = plt.subplots(figsize=(2, 0.5))
     ax.plot(trend, color=color, linewidth=2)
     ax.fill_between(
-            range(len(trend)),
-            trend,
-            30,
-            color=color,
-            alpha=0.2  # Slightly transparent fill
-        )
+        range(len(trend)),
+        trend,
+        30,
+        color=color,
+        alpha=0.2,  # Slightly transparent fill
+    )
     ax.set_ylim(30, 1)
     ax.axis("off")
 
@@ -191,16 +208,32 @@ def trend_to_sparkline(team):
     return f"data:image/png;base64,{base64.b64encode(img_bytes.getvalue()).decode()}"
 
 
+# stats.insert((0, 'Rank', range(1, len(stats) + 1)))
+
 stats["trend"] = stats.index.to_series().apply(trend_to_sparkline)
-#df["trend_graph"] = df
+
+# df["trend_graph"] = df
+stats = stats.rename(
+    columns={
+        "min": "best rank",
+        "max": "worst rank",
+        "mean": "mean rank",
+        "std": "standard dev.",
+    }
+)
+
 print(stats)
+# print(stats)
 
 st.dataframe(
-    stats, 
+    stats,
+    height=600,
+    # width= 900,
     column_config={
-        "trend": st.column_config.ImageColumn("Weekly Trend", width="small"),
+        "trend": st.column_config.ImageColumn("performance", width="small"),
         "mean": st.column_config.NumberColumn(format="%.2f"),
         "std": st.column_config.NumberColumn(format="%.2f"),
-        "max_1week_delta": st.column_config.NumberColumn("Max Weekly Δ", format="%.2f")
+        "max_change": st.column_config.NumberColumn("max 1wk change", format="%.2f"),
     },
-    use_container_width=True)
+    use_container_width=True,
+)
