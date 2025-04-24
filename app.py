@@ -15,25 +15,6 @@ import base64
 
 from support import nba_teams
 
-# import sys
-# from pathlib import Path
-
-## Absolute path to support module
-# support_path = Path(__file__).parent / "support"
-# sys.path.insert(0, str(support_path))
-
-# try:
-#    from support import nba_teams  # Explicit relative import
-# except ImportError:
-#    try:
-#        import nba_teams  # Fallback
-#    except ImportError as e:
-#        raise RuntimeError(
-#            f"❌ Failed to import nba_teams. "
-#            f"Check: {list(support_path.glob('*'))} "
-#            f"Current sys.path: {sys.path}"
-#        ) from e
-
 
 def find_file(file_name):
     """Find file within Dash_Deploy/support/ or support/."""
@@ -177,7 +158,6 @@ df_group.drop(["min", "max"], axis=1, inplace=True)
 
 stats = (
     df_long.groupby("teamname")["rank"].agg(["min", "max", "mean", "std"])
-    # .assign(max_1week_delta=df_long.groupby("teamname")["change"].max())
     .round(2)
     # .reset_index()
 )
@@ -223,11 +203,11 @@ stats = stats.rename(
 )
 
 print(stats)
-# print(stats)
+
 
 st.dataframe(
     stats,
-    height=600,
+    height=700,
     # width= 900,
     column_config={
         "trend": st.column_config.ImageColumn("performance", width="small"),
